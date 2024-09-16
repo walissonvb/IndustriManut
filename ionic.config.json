@@ -1,0 +1,7 @@
+{
+  "name": "IndustriManut",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
