@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
+// home.module.ts
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
-
+import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
-
+import { HomePage } from './home.page';
+import { PopoverSuboptionsComponent } from '../popover-suboptions/popover-suboptions.component'; // Importe o componente
 
 @NgModule({
   imports: [
@@ -14,6 +14,7 @@ import { HomePageRoutingModule } from './home-routing.module';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, PopoverSuboptionsComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomePageModule {}
