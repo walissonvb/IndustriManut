@@ -5,12 +5,11 @@
         <ion-icon name="menu"></ion-icon>
       </ion-menu-button>
     </ion-buttons>
-    <ion-button slot="end" search (click)="pesquisar()" id="search-button">
-      <ion-icon name="search-outline"></ion-icon>
+    <ion-button color="rgba(255, 165, 0, 0.4)" slot="end" (click)="pesquisar()" >
+      <ion-icon  name="search-sharp"></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-header>
-
 <ion-menu side="start" contentId="menuContent" id="side-menu">
   <ion-content>
     <!-- Lista de opções do menu -->
@@ -66,7 +65,7 @@
           </ion-card-header>
           <ion-card-content>
             <ion-list *ngFor="let mensagem of retPreve" id="ion-list">
-              <ion-item id="fullscreen-image-maquina">
+              <ion-item >
                 <ion-thumbnail slot="start">
                   <img src="{{ mensagem.foto }}" />
                 </ion-thumbnail>
@@ -85,7 +84,7 @@
           </ion-card-header>
           <ion-card-content>
             <ion-list *ngFor="let almox of infoRel " id="ion-list">
-              <ion-item id="fullscreen-image-maquina">
+              <ion-item >
                 <ion-label>{{almox .nomePreventiva}}</ion-label>
               </ion-item>
             </ion-list>
@@ -101,7 +100,7 @@
           <ion-card-content>
 
             <ion-list *ngFor="let maquina of retmaq " id="ion-list">
-              <ion-item id="fullscreen-image-maquina">
+              <ion-item >
                 <ion-thumbnail slot="start">
                   <img src=" {{ maquina .classificacao }}" />
                 </ion-thumbnail>
@@ -115,19 +114,18 @@
   </ion-grid>
 </div>
 <ion-footer class="transparent-footer">
-  <ion-fab>
-    <ion-fab-button (click)="logout()">
-      <ion-icon name="add">sair</ion-icon>
+  <ion-fab  horizontal="center" vertical="center">
+    <ion-fab-button >
+      <ion-icon name="construct-sharp"></ion-icon>
     </ion-fab-button>
-    <ion-fab-list side="end">
+    <ion-fab-list side="start">
       <ion-fab-button>
-        <ion-icon name="document"></ion-icon>
+        <ion-icon name="qr-code-outline"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button>
-        <ion-icon name="color-palette"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button>
-        <ion-icon name="globe"></ion-icon>
+    </ion-fab-list>
+      <ion-fab-list side="end">
+      <ion-fab-button >
+        <ion-icon name="power-sharp"(click)="logout()"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
   </ion-fab>
