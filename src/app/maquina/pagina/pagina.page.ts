@@ -22,7 +22,7 @@ export interface Arvorepeca {
   templateUrl: './pagina.page.html',
   styleUrls: ['./pagina.page.scss'],
 })
-export class PaginaPage01 implements OnInit {
+export class Pagina01Page implements OnInit {
   selectedMaquinaNome!: string;
   maquina!: Maquina[];
   showForm = true;
@@ -44,7 +44,6 @@ export class PaginaPage01 implements OnInit {
       if (user) {
         const userId = user.uid;
         console.log(`ID do usuário autenticado: ${userId}`);
-        this.showSuccessToast('ID do usuário autenticado com sucesso!');
 
         this.maquina = await this.service.readData(userId);
       } else {
@@ -86,7 +85,6 @@ export class PaginaPage01 implements OnInit {
 
   async abrirModal() {
     const user = await this.afAuth.currentUser;
-    const idpeca = await this.servico;
     if (user) {
       const modal = await this.modalCtrl.create({
         component: ModalPage,

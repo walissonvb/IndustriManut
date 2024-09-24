@@ -11,12 +11,15 @@
 @media only screen and (max-width: 600px) {
   .ion-card {
     width: 80%;
+    margin-left: 30px;
 
   }
 }
 @media only screen and (min-width: 601px) {
   .ion-card {
     width: 48%;
+    margin-left: 30px;
+
   }
 }
 ion-footer {
@@ -61,6 +64,7 @@ ion-footer {
   margin-right: 5%;
   display: flex;
   justify-content: space-between;
+  color: #000000;
 }
 
 /* Estilo para cada botão individual */
@@ -68,6 +72,7 @@ ion-footer {
   flex: 1;
   margin-right: 10px; /* Espaçamento entre os botões */
   margin-right: 10%;
+  color: #000000;
 }
 
 .ion-card {

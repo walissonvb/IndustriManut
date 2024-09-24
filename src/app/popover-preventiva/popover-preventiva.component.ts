@@ -1,5 +1,5 @@
 import { CadastroprevePage } from './../preventiva/cadastropreve/cadastropreve.page';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { PreventpaginaPage } from '../preventiva/preventpagina/preventpagina.page';
 import { PopoverController } from '@ionic/angular';
@@ -10,14 +10,13 @@ import { RelatorioPage } from '../preventiva/relatorio/relatorio.page';
   templateUrl: './popover-preventiva.component.html',
   styleUrls: ['./popover-preventiva.component.scss'],
 })
-export class PopoverPreventivaComponent  implements OnInit {
+export class PopoverPreventivaComponent{
 
   constructor(
     private modalCtrl: ModalController,
     private popoverCtrl: PopoverController
   ) { }
 
-  ngOnInit() {}
 
 
   acaoBotao3() {

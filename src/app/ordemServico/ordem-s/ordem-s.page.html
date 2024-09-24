@@ -9,12 +9,9 @@
     <div>
       <form [formGroup]="mensagemForm" (ngSubmit)="gerarRelatorio()">
         <div *ngIf="firtchec">
-          <ion-toolbar>
-            <p class="deslocado">Nome da Máquina</p>
-          </ion-toolbar>
           <ion-list>
             <ion-item *ngFor="let m of maquinas">
-              <ion-button expand="block" class="minha-cor" (click)="firtchecOUT(m.id, m.nome)">
+              <ion-button expand="block" class="div-input-firt" (click)="firtchecOUT(m.id, m.nome)">
                 {{ m.nome }}
               </ion-button>
             </ion-item>

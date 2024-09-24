@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, HostListener, OnDestroy } from '@angular/core';
 import { ModalController, IonContent, IonMenu, PopoverController, ToastController } from '@ionic/angular';
 import { PaginaPage } from '../almoxarife/pagina/pagina.page';
-import { PaginaPage01 } from '../maquina/pagina/pagina.page';
+import { Pagina01Page } from '../maquina/pagina/pagina.page';
 import { PreventpaginaPage } from '../preventiva/preventpagina/preventpagina.page';
 import { Maquina, MaquinaeService } from '../servico/maquinae.service';
 import { AlmoxarifeService, Cliente } from '../servico/almoxarife.service';
@@ -174,7 +174,7 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   abrirMaquina() {
-    this.modalCtrl.create({ component: PaginaPage01 }).then((modal) => modal.present());
+    this.modalCtrl.create({ component: Pagina01Page }).then((modal) => modal.present());
   }
 
   abrirPreventiva() {

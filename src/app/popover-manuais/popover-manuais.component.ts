@@ -10,16 +10,14 @@ import { OrdemSPage } from '../ordemServico/ordem-s/ordem-s.page';
   templateUrl: './popover-manuais.component.html',
   styleUrls: ['./popover-manuais.component.scss'],
 })
-export class PopoverManuaisComponent  implements OnInit {
+export class PopoverManuaisComponent {
 
   constructor(
     private modalCtrl:ModalController,
     private popoverCtrl: PopoverController,
   ) { }
 
-  ngOnInit() {
 
-  }
   acaoBotao1() {
     this.popoverCtrl.dismiss();
     this.modalCtrl.create({ component: OrdemSPage }).then((modal) => modal.present());

@@ -24,7 +24,7 @@
       *ngFor="let os of ordemServico"
       [button]="true"
       (click)="opemOrdenSservice(os.numeroOrdem)">
-      <ion-label *ngIf="os.lido === (segmentValue === 'LIDOS')">
+      <ion-label class="div-input-firt" *ngIf="os.lido === (segmentValue === 'LIDOS')">
        {{ os.dataInicial }}, {{ os.nomePreventiva }}
       </ion-label>
     </ion-item>

@@ -14,15 +14,23 @@
   <ion-content>
     <!-- Lista de opções do menu -->
     <ion-list id="menu-list">
-      <ion-item id="ordem-servico">ORDEM DE SERVIÇO</ion-item>
-      <ion-item id="manutencao-autonoma">MANUTENÇÃO AUTONOMA</ion-item>
+      <ion-item id="ordem-servico" value="OrdemServiço" (click)="PopoverManuaisComponent($event)">ORDENS DE SERVIÇO</ion-item>
+      <ion-item id="manutencao-autonoma" (click)="abrirManuAuto()">MANUTENÇÃO AUTONOMA</ion-item>
       <ion-item id="rotas-inspecao">ROTAS DE INSPEÇÃO</ion-item>
       <ion-item id="preditiva">PREDITIVA</ion-item>
       <ion-item id="material-pesquisa">MATERIAL PESQUISA</ion-item>
       <ion-item id="coleta-vibracao">VIBRAÇÃO</ion-item>
       <ion-item id="coleta-termo">TERMOGRAFIA</ion-item>
-      <ion-item id="COLETA-OLEO">ÓLEO</ion-item>
-      <ion-item id="contato">CONTATO</ion-item>
+      <ion-item id="COLETA-OLEO">COLETA ÓLEO</ion-item>
+      <ion-item id="contato">
+        <p>Contatos</p>
+        </ion-item>
+        <ion-item>
+          <p><a href="mailto:walissonvb@gmail.com">E-mail</a></p>
+        </ion-item>
+        <ion-item>
+        <p><a href="tel:+553199184578">whatsApp</a></p>
+      </ion-item>
 
     </ion-list>
   </ion-content>
