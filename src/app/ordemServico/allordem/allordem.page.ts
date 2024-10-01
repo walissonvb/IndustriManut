@@ -1,7 +1,7 @@
-import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { RelatorioService, Relatorio } from 'src/app/servico/relatorio.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { ModalController } from '@ionic/angular';
 import { WhatsonPage } from 'src/app/whatson/whatson.page';
 
 @Component({
@@ -10,70 +10,67 @@ import { WhatsonPage } from 'src/app/whatson/whatson.page';
   styleUrls: ['./allordem.page.scss'],
 })
 export class AllordemPage implements OnInit {
-  segmentValue: 'LIDOS' | 'NÃO LIDOS' = 'NÃO LIDOS';
-  allLidas: Relatorio | null | undefined = null;
+  segmentValue: 'LIDOS' | 'NÃO LIDOS' = 'NÃO LIDOS';  // Segment toggle between read and unread
+  selectedRelatorio: Relatorio | null = null;
+  showForm = true;
   ordemServico: Relatorio[] = [];
-  allOrdem: Relatorio[] = [];
-  nuberOS: string = '';
-  layotPage: boolean = false;  // Começa com a lista de ordens
 
   constructor(
-    private relatServ: RelatorioService,
-    private Auth: AngularFireAuth,
-    private modalCtr: ModalController
-  ) { }
+    private modalCtrl: ModalController,
+    private afAuth: AngularFireAuth,
+    private relatServ: RelatorioService
+  ) {}
 
-  // Carrega as ordens de serviço no início
   async ngOnInit() {
     try {
-      const user = await this.Auth.currentUser;
+      const user = await this.afAuth.currentUser;
       if (user) {
         const userId = user.uid;
-        this.ordemServico = await this.relatServ.readData03(userId);
-        console.log('Ordens de serviço:', this.ordemServico);
+        console.log(`Authenticated User ID: ${userId}`);
+        this.ordemServico = await this.relatServ.readData03(user.uid);
+        console.log(`Data retrieved: ${this.ordemServico}`);
       }
-    } catch (err) {
-      console.error('Erro ao carregar ordens de serviço:', err);
+    } catch (error) {
+      console.error('Error fetching data:', error);
     }
   }
 
-  // Lida com a mudança de segmento e atualiza o valor de `segmentValue`
-  segmentChanged(event: any) {
-    console.log(event);
+  opemRelato(id: string) {
+    this.selectedRelatorio = this.ordemServico.find(r => r.id === id) || null;
+    this.showForm = !this.showForm;
+    if (this.selectedRelatorio) {
+      this.selectedRelatorio.lido = true;
+      this.updateRelatorio(this.selectedRelatorio);
+    }
   }
 
-  async opemOrdenSservice(nuberOS: string) {
-    console.log('Ordem selecionada:', nuberOS);
+  async updateRelatorio(relatorio: Relatorio) {
     try {
-      this.allOrdem = this.ordemServico.filter(peca => peca.numeroOrdem === nuberOS);
-      console.log(this.allOrdem)
-      this.allLidas = this.allOrdem.find(peca => peca.lido);
-      console.log('Ordem para exibição:', this.allLidas);
-
-      if (this.allLidas) {
-        this.allLidas.lido = true;  // Atualiza para "lido"
-        this.endOs(this.allLidas);
-        this.layotPage = !this.layotPage;
-        console.log(this.layotPage)
-
-      }
-    } catch (err) {
-      console.error('Erro ao abrir ordem de serviço:', err);
+      await this.relatServ.updateData03(relatorio.id, relatorio);
+      console.log('Successfully updated the report!');
+    } catch (error) {
+      console.error('Error updating report:', error);
     }
   }
 
-  endOs(os: Relatorio) {
-    const updatedRelatorio = { ...os, lido: true };
-    this.relatServ.updateData03(os.id, updatedRelatorio).then(() => {
-    }).catch(err => {
-      console.error('Erro ao atualizar ordem:', err);
-    });
+  async deleteRelat(id: string) {
+    try {
+      await this.relatServ.deleteData03(id);
+      this.fecharModal();
+    } catch (error) {
+      console.error('Error deleting report:', error);
+    }
   }
-      async pesquisar() {
-    this.modalCtr.create({component: WhatsonPage}).then((modal) => modal.present());
-     }
+
+  toggleView() {
+    this.showForm = !this.showForm;
+  }
+
+  async pesquisar() {
+    this.modalCtrl.create({ component: WhatsonPage }).then(modal => modal.present());
+  }
 
   fecharModal() {
-    this.modalCtr.dismiss();
+    this.modalCtrl.dismiss();
   }
 }

@@ -39,7 +39,6 @@ export class RelatorioService {
     console.log(`Number of documents fetched: ${querySnapshot.size}`);
     const mensagens: Relatorio[] = [];
     querySnapshot.forEach((doc) => {
-      console.log(`Document ID: ${doc.id}, Data: `, doc.data());
       const { id, ...data } = doc.data() as Relatorio;
       mensagens.push({ id: doc.id, ...data });
     });

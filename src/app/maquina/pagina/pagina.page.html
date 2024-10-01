@@ -26,22 +26,14 @@
           </ion-button>
 
         </ion-buttons>
-        <ion-button class="card-botoes" fill="outline" color="dark" (click)="openListPeca(c.id)">Peças</ion-button>
+        <ion-button class="buttonactul" fill="outline" (click)="openListPeca(c.id)">Peças</ion-button>
       </ion-card-content>
     </ion-card>
-
-
-    <ion-button expand="block" fill="outline" (click)="abrirModal()">Novo Ativo</ion-button>
+    <ion-button class="buttonCreat" expand="block" fill="outline" (click)="abrirModal()">Novo Ativo</ion-button>
   </ion-list>
 </ion-content>
 <ion-footer>
   <ion-toolbar class="minha-cor">
-
-    <div class="ion-text-center" style="flex: 1;">
-      <ion-button class="minha-cor">
-        <ion-icon name="search-outline"></ion-icon>
-      </ion-button>
-    </div>
     <ion-buttons slot="end">
       <ion-button (click)="fecharModal()">
         <ion-icon name="close-circle-outline"></ion-icon>

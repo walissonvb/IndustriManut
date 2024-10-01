@@ -1,26 +1,44 @@
 .minha-cor {
   --background: orange;
 }
-.segment {
-  color: rgb(0, 0, 0);
+
+.div-input-firt {
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin: 15px;
+  --background: rgba(49, 49, 48, 0.4) !important;
+  color: rgb(252, 251, 251);
+  text-align: center;
+  font-size: 20px;
 }
+
+ion-content {
+  padding: 0 15px;
+}
+
+.deslocado {
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+}
+
+ion-item {
+  --padding-start: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+}
+
+ion-select, ion-input {
+  --padding-start: 15px;
+  text-align: left;
+}
+
 ion-footer {
-  box-shadow: 0px 0px 0px px rgba(255, 165, 0, 0.4);
+  box-shadow: 0px 0px 0px 2px rgba(255, 165, 0, 0.4);
   border-color: rgba(255, 165, 0, 0.4);
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-}
-.div-input-firt {
-  border: 1px solid #000;
-  border-radius: 5px; /* Arredonda os cantos do botão */
-  margin: 15px;
-  --background: rgba(49, 49, 48, 0.4) !important;
-  color: rgb(252, 251, 251);
-  text-align: center;
-  text-shadow:  4px rgba(10, 10, 10); /* Adiciona uma sombra ao texto */
-  font-size: 20px; /* Aumenta o tamanho do texto */
-  margin-top: 5px;
-  margin-bottom: 5px;
 }

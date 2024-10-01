@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar class="minha-cor">
     <ion-title>Relatório O.S</ion-title>
-    <ion-button color="rgba(255, 165, 0, 0.4)" slot="end" search (click)="pesquisar()" id="search-button">
+    <ion-button color="rgba(255, 165, 0, 0.4)" slot="end" (click)="pesquisar()" id="search-button">
       <ion-icon name="search-outline"></ion-icon>
     </ion-button>
   </ion-toolbar>
@@ -10,46 +10,45 @@
 <ion-toolbar class="minha-cor">
   <ion-segment color="dark" [(ngModel)]="segmentValue">
     <ion-segment-button class="segment" value="NÃO LIDOS">
-      <ion-label>NÃO LIDOS</ion-label>
+      <ion-label>NÃO EXECUTADA</ion-label>
     </ion-segment-button>
     <ion-segment-button class="segment" value="LIDOS">
-      <ion-label>LIDOS</ion-label>
+      <ion-label>EXECUTADA</ion-label>
     </ion-segment-button>
   </ion-segment>
 </ion-toolbar>
 
-<ion-content>
-  <ion-list *ngIf="!layotPage">
-    <ion-item
-      *ngFor="let os of ordemServico"
-      [button]="true"
-      (click)="opemOrdenSservice(os.numeroOrdem)">
-      <ion-label class="div-input-firt" *ngIf="os.lido === (segmentValue === 'LIDOS')">
-       {{ os.dataInicial }}, {{ os.nomePreventiva }}
-      </ion-label>
-    </ion-item>
+<ion-content *ngIf="showForm">
+  <ion-list>
+    <ion-item-sliding *ngFor="let os of ordemServico">
+      <ion-item [button]="true" (click)="opemRelato(os.id)" *ngIf="os.lido === (segmentValue === 'LIDOS')">
+        <ion-label>
+          <h2>{{ os.nomePreventiva }}, {{ os.periodicidade }}</h2>
+        </ion-label>
+      </ion-item>
+      <ion-item-options slot="end" *ngIf="os.lido === (segmentValue === 'LIDOS')">
+        <ion-item-option color="danger" expandable="true" (click)="deleteRelat(os.id)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
-
-  <div *ngIf="layotPage && allLidas">
-    <ion-card>
-      <ion-card-header>
-        <ion-title>{{ allLidas.numeroOrdem }}</ion-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p><strong>Equipamento:</strong> {{ allLidas.nomePreventiva }}</p>
-        <p><strong>Local:</strong> {{ allLidas.localInstalacao }}</p>
-        <p><strong>Data de Abertura:</strong> {{ allLidas.dataInicial | date }}</p>
-        <p><strong>Tempo Máximo:</strong> {{ allLidas.periodicidade }}</p>
-        <p><strong>Descrição da Anomalia:</strong> {{ allLidas.instrucao }}</p>
-        <ion-button expand="block" class="minha-cor" (click)="endOs(allLidas)">
-          O.S executada
-        </ion-button>
-      </ion-card-content>
-    </ion-card>
-  </div>
 </ion-content>
 
-<!-- Rodapé fixo com o botão de fechar modal -->
+<ion-content *ngIf="!showForm && selectedRelatorio">
+  <ion-card>
+    <ion-card-title>{{ selectedRelatorio.nomePreventiva }}</ion-card-title>
+    <ion-card-content>
+      <p><strong>Tipo:</strong> {{ selectedRelatorio.tipo }}</p>
+      <p><strong>Nome:</strong> {{ selectedRelatorio.nome }}</p>
+      <p><strong>Status:</strong> {{ selectedRelatorio.status }}</p>
+      <p><strong>Data Inicial:</strong> {{ selectedRelatorio.dataInicial | date }}</p>
+      <p><strong>Periodicidade:</strong> {{ selectedRelatorio.periodicidade }}</p>
+      <p><strong>Relatório Texto:</strong> {{ selectedRelatorio.relatorioTexto }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
 <ion-footer>
   <ion-toolbar class="minha-cor">
     <ion-buttons slot="end">

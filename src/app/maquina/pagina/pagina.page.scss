@@ -59,16 +59,10 @@ ion-footer {
 
 }
 
-/* Estilo para os botões do card */
-.card-botoes {
-  margin-right: 5%;
-  display: flex;
-  justify-content: space-between;
-  color: #000000;
-}
+
 
 /* Estilo para cada botão individual */
-.card-botoes ion-button {
+.card-botoes {
   flex: 1;
   margin-right: 10px; /* Espaçamento entre os botões */
   margin-right: 10%;
@@ -79,7 +73,16 @@ ion-footer {
   width: 250px; /* Largura desejada */
   height: 220px; /* Altura desejada */
 }
+.buttonCreat{
+  --border-color: orange;
+  color: orange;
+  margin: 60px;
 
+}
+.buttonactul{
+  color: orange;
+  --border-color: orange;
+}
 
 
 
