@@ -14,7 +14,7 @@
 
 <ion-content *ngIf="showForm">
   <ion-list *ngFor="let c of maquina">
-    <ion-button expand="block" class="div-input-firt" (click)="toggleForm(c.id, c.nome)"> {{c.nome}} </ion-button>
+    <ion-button expand="block" (click)="toggleForm(c.id, c.nome)"> {{c.nome}} </ion-button>
   </ion-list>
 </ion-content>
 

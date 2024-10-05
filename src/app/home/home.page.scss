@@ -14,6 +14,7 @@ body, ion-content {
   color: rgb(250, 244, 244);
   box-shadow: 0px 6px 0px 0px rgba(255, 165, 0, 0.4);
   border-color: rgba(255, 165, 0, 0.4);
+  height: 45px;
   #search-button01{
     background-color: rgba(255, 165, 0, 0.4);
 
@@ -55,7 +56,7 @@ ion-segment-button {
   background-size: cover;
   display: flex;
   flex-direction: column;
-  min-height: 80vh;
+  min-height: 100vh;
 }
 
 /* ========== CARDS ========== */

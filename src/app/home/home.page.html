@@ -1,20 +1,22 @@
 <ion-header id="app-header">
   <ion-toolbar class="transparent-header">
-    <ion-buttons slot="start">
-      <ion-menu-button id="menu-button">
-        <ion-icon name="menu"></ion-icon>
+    <ion-buttons >
+      <ion-menu-button  id="menu-button">
+        <ion-icon slot="start" name="menu"></ion-icon>
       </ion-menu-button>
+      <ion-title>INDUSTRI-PREV</ion-title>
+      <ion-button color="rgba(255, 165, 0, 0.4)" (click)="pesquisar()">
+        <ion-icon slot="end"  name="search-sharp"></ion-icon>
+      </ion-button>
     </ion-buttons>
-    <ion-button color="rgba(255, 165, 0, 0.4)" slot="end" (click)="pesquisar()" >
-      <ion-icon  name="search-sharp"></ion-icon>
-    </ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-menu side="start" contentId="menuContent" id="side-menu">
   <ion-content>
     <!-- Lista de opções do menu -->
     <ion-list id="menu-list">
-      <ion-item id="ordem-servico" value="OrdemServiço" (click)="PopoverManuaisComponent($event)">ORDENS DE SERVIÇO</ion-item>
+      <ion-item id="ordem-servico" value="OrdemServiço" (click)="PopoverManuaisComponent($event)">ORDENS DE
+        SERVIÇO</ion-item>
       <ion-item id="manutencao-autonoma" (click)="abrirManuAuto()">MANUTENÇÃO AUTONOMA</ion-item>
       <ion-item id="rotas-inspecao">ROTAS DE INSPEÇÃO</ion-item>
       <ion-item id="preditiva">PREDITIVA</ion-item>
@@ -24,11 +26,11 @@
       <ion-item id="COLETA-OLEO">COLETA ÓLEO</ion-item>
       <ion-item id="contato">
         <p>Contatos</p>
-        </ion-item>
-        <ion-item>
-          <p><a href="mailto:walissonvb@gmail.com">E-mail</a></p>
-        </ion-item>
-        <ion-item>
+      </ion-item>
+      <ion-item>
+        <p><a href="mailto:walissonvb@gmail.com">E-mail</a></p>
+      </ion-item>
+      <ion-item>
         <p><a href="tel:+553199184578">whatsApp</a></p>
       </ion-item>
 
@@ -69,11 +71,12 @@
         <ion-card id="fullscreen-card">
           <ion-card-header id="cardHeader">
             <ion-card-title class="card-titulo">Proximas Preventivas</ion-card-title>
-            <ion-card-subtitle class="card-subtitulo" *ngIf="retPreve.length === 0">NÃO HÁ PREVENTIVAS CADASTRADAS</ion-card-subtitle>
+            <ion-card-subtitle class="card-subtitulo" *ngIf="retPreve.length === 0">NÃO HÁ PREVENTIVAS
+              CADASTRADAS</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
             <ion-list *ngFor="let mensagem of retPreve" id="ion-list">
-              <ion-item >
+              <ion-item>
                 <ion-thumbnail slot="start">
                   <img src="{{ mensagem.foto }}" />
                 </ion-thumbnail>
@@ -92,7 +95,7 @@
           </ion-card-header>
           <ion-card-content>
             <ion-list *ngFor="let almox of infoRel " id="ion-list">
-              <ion-item >
+              <ion-item>
                 <ion-label>{{almox .nomePreventiva}}</ion-label>
               </ion-item>
             </ion-list>
@@ -103,12 +106,13 @@
         <ion-card id="fullscreen-card">
           <ion-card-header>
             <ion-card-title class="card-titulo">Todos os Ativos</ion-card-title>
-            <ion-card-subtitle class="card-subtitulo" *ngIf="retmaq.length === 0">NÃO HÁ MAQUINAS CADASTRADAS</ion-card-subtitle>
+            <ion-card-subtitle class="card-subtitulo" *ngIf="retmaq.length === 0">NÃO HÁ MAQUINAS
+              CADASTRADAS</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
 
             <ion-list *ngFor="let maquina of retmaq " id="ion-list">
-              <ion-item >
+              <ion-item>
                 <ion-thumbnail slot="start">
                   <img src=" {{ maquina .classificacao }}" />
                 </ion-thumbnail>
@@ -122,8 +126,8 @@
   </ion-grid>
 
 </div>
-<ion-fab  horizontal="center" vertical="bottom">
-  <ion-fab-button >
+<ion-fab horizontal="center" vertical="bottom">
+  <ion-fab-button>
     <ion-icon name="construct-sharp"></ion-icon>
   </ion-fab-button>
   <ion-fab-list side="start">
@@ -131,10 +135,9 @@
       <ion-icon name="qr-code-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab-list>
-    <ion-fab-list side="end">
-    <ion-fab-button >
-      <ion-icon name="power-sharp"(click)="logout()"></ion-icon>
+  <ion-fab-list side="end">
+    <ion-fab-button>
+      <ion-icon name="power-sharp" (click)="logout()"></ion-icon>
     </ion-fab-button>
   </ion-fab-list>
 </ion-fab>
-
