@@ -1,9 +1,15 @@
-<ion-header>
-  <ion-toolbar class="minha-cor">
-    <ion-title>Preventiva Da Maquina</ion-title>
-    <ion-button color="rgba(255, 165, 0, 0.4)" slot="end" search (click)="pesquisar()" id="search-button">
-      <ion-icon name="search-outline"></ion-icon>
-    </ion-button>  </ion-toolbar>
+<ion-header >
+  <ion-toolbar>
+    <ion-title slot="start">Escolha Ativo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="pesquisar()" >
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="fecharModal()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 
@@ -26,21 +32,5 @@
     <p>Nenhuma máquina disponível.</p>
   </ng-template>
 
-<ion-footer class="transparent-footer">
-  <ion-toolbar class="minha-cor">
-    <ion-buttons slot="start">
-    </ion-buttons>
-    <div class="ion-text-center" style="flex: 1;">
-      <ion-button class="minha-cor">
-        <ion-icon name="search-outline"></ion-icon>
-      </ion-button>
-    </div>
-    <ion-buttons slot="end">
-      <ion-button (click)="fecharModal()">
-        <ion-icon name="close-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-footer>
 
 </ion-content>

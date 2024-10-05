@@ -1,9 +1,14 @@
-<ion-header>
-  <ion-toolbar class="minha-cor">
-    <ion-title>Cadastro de Maquinas</ion-title>
-    <ion-button color="rgba(255, 165, 0, 0.4)" slot="end" search (click)="pesquisar()" id="search-button">
-      <ion-icon name="search-outline"></ion-icon>
-    </ion-button>
+<ion-header >
+  <ion-toolbar>
+    <ion-title slot="start">Cadastro de Maquinas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="pesquisar()" >
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="fecharModal()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -23,27 +28,7 @@
         <ion-radio value="B">B</ion-radio>
         <ion-radio value="C">C</ion-radio>
       </ion-radio-group>
-      <ion-button color="warning" fill="outline" expand="block" type="submit">Cadastrar</ion-button>
-
   </form>
 </ion-content>
-  <ion-footer>
-  <ion-toolbar class="minha-cor">
-    <ion-buttons slot="start">
-      <ion-button>
-        <ion-icon name="reader-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <!-- adiciona um elemento div com a classe ion-text-center ao redor do botão -->
-    <div class="ion-text-center" style="flex: 1;">
-      <ion-button class="minha-cor">
-        <ion-icon name="search-outline"></ion-icon>
-      </ion-button>
-    </div>
-    <ion-buttons slot="end">
-      <ion-button (click)= "fecharModal()">
-        <ion-icon name="close-circle-outline" ></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-footer>
+<ion-button color="warning" fill="outline" expand="block" type="submit">Cadastrar</ion-button>
+

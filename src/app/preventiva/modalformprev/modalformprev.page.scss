@@ -1,6 +1,15 @@
-.minha-cor {
+.toolbar {
   --background: orange;
-  text-align: center;
+  height: 45px;
+}
+ion-title{
+  margin-bottom: 13px;
+  color: #000;
+
+}
+
+ion-buttons{
+  margin-bottom: 13px;
 }
 
 ion-button {

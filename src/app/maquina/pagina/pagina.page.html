@@ -1,9 +1,14 @@
-<ion-header>
-  <ion-toolbar class="minha-cor">
-    <ion-title> Máquinas </ion-title>
-    <ion-button color="rgba(255, 165, 0, 0.4)" slot="end" search (click)="pesquisar()" id="search-button">
-      <ion-icon name="search-outline"></ion-icon>
-    </ion-button>
+<ion-header >
+  <ion-toolbar>
+    <ion-title slot="start"> Ativos </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="pesquisar()" >
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="fecharModal()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -32,13 +37,3 @@
     <ion-button class="buttonCreat" expand="block" fill="outline" (click)="abrirModal()">Novo Ativo</ion-button>
   </ion-list>
 </ion-content>
-<ion-footer>
-  <ion-toolbar class="minha-cor">
-    <ion-buttons slot="end">
-      <ion-button (click)="fecharModal()">
-        <ion-icon name="close-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-
-  </ion-toolbar>
-</ion-footer>

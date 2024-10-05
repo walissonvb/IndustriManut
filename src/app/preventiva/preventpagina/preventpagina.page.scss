@@ -1,6 +1,16 @@
-.minha-cor {
-  --background: orange;}
+ion-toolbar {
+  --background: orange;
+  height: 45px;
+}
+ion-title{
+  margin-bottom: 13px;
+  color: #000;
 
+}
+
+ion-buttons{
+  margin-bottom: 13px;
+}
 .container {
   margin-left: 50px;
   margin-right: 50px;
@@ -26,15 +36,6 @@ ion-button {
 
 .periodicidade{
   text-align: center
-}
-.transparent-footer{
-  --background: orange;
-
-}
-ion-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 }
 .ion-card {
   background: url('https://live.staticflickr.com/65535/53683733944_3ff2eba62d_w.jpg') no-repeat center center fixed;

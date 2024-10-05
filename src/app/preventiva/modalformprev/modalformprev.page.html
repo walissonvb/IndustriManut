@@ -1,8 +1,17 @@
-<ion-header>
-  <ion-toolbar class="minha-cor">
-    <ion-title>modalformpreve</ion-title>
+<ion-header >
+  <ion-toolbar class="toolbar">
+    <ion-title slot="start">Cadastro Preventiva</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="pesquisar()" >
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="fecharModal()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <br><br>
 <ion-content>
   <ng-container>
@@ -149,21 +158,5 @@
 
     </form>
 
-    <ion-footer>
-      <ion-toolbar class="minha-cor">
-        <ion-buttons slot="start">
-        </ion-buttons>
-        <div class="ion-text-center" style="flex: 1;">
-          <ion-button class="minha-cor">
-            <ion-icon name="search-outline"></ion-icon>
-          </ion-button>
-        </div>
-        <ion-buttons slot="end">
-          <ion-button (click)="fecharModal()">
-            <ion-icon name="close-circle-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-footer>
   </ng-container>
 </ion-content>

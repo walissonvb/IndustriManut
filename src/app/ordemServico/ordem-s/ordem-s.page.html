@@ -1,6 +1,14 @@
-<ion-header>
-  <ion-toolbar class="minha-cor">
-    <ion-title>Ordem de Serviço</ion-title>
+<ion-header >
+  <ion-toolbar>
+    <ion-title slot="start">Ordem de Serviço</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="pesquisar()" >
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="fecharModal()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -106,7 +114,7 @@
           <ion-input label="Foto" label-placement="floating" fill="solid" placeholder="Digite a foto" type="text" formControlName="foto"></ion-input>
         </div>
 
-        <ion-button type="submit" expand="block" class="minha-cor">Criar O.S</ion-button>
+        <ion-button type="submit" expand="block" >Criar O.S</ion-button>
       </div>
     </form>
   </div>

@@ -1,9 +1,14 @@
-<ion-header>
-  <ion-toolbar class="minha-cor">
-    <ion-title>Cadastro S</ion-title>
-    <ion-button color="rgba(255, 165, 0, 0.4)" slot="end" (click)="pesquisar()" id="search-button">
-      <ion-icon name="search-outline"></ion-icon>
-    </ion-button>
+<ion-header >
+  <ion-toolbar>
+    <ion-title slot="start">Execução Preventivas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="pesquisar()" >
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="fecharModalexibicao()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -38,20 +43,3 @@
     </ng-container>
   </ion-list>
 </ion-content>
-
-
-
-<ion-footer *ngIf="!exibirFormulario">
-  <ion-toolbar class="minha-cor">
-    <div class="ion-text-center" style="flex: 1;">
-      <ion-button class="minha-cor">
-        <ion-icon name="search-outline"></ion-icon>
-      </ion-button>
-    </div>
-    <ion-buttons slot="end">
-      <ion-button (click)="fecharModalexibicao()">
-        <ion-icon name="close-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-footer>

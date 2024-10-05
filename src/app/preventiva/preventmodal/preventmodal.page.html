@@ -1,9 +1,14 @@
-<ion-header>
-  <ion-toolbar class="minha-cor">
-    <ion-title>PreventiMODAL</ion-title>
-    <ion-button color="rgba(255, 165, 0, 0.4)" slot="end" search id="search-button">
-      <ion-icon name="search-outline"></ion-icon>
-    </ion-button>
+<ion-header >
+  <ion-toolbar>
+    <ion-title slot="start">Passo a Passo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="pesquisar()" >
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="fecharModal()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

@@ -1,5 +1,19 @@
-.minha-cor {
+ion-toolbar {
   --background: orange;
+  height: 45px;
+}
+ion-title{
+  margin-bottom: 13px;
+  color: #000;
+
+}
+
+ion-buttons{
+  margin-bottom: 13px;
+}
+ion-button{
+  --background: orange;
+color: #000;
 }
 .segment {
   color: rgb(0, 0, 0);

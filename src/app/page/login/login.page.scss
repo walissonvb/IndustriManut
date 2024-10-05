@@ -1,3 +1,17 @@
+ion-header{
+  ion-toolbar {
+    --background: orange;
+    height: 45px;
+  }
+  ion-title {
+    margin-bottom: 13px;
+    color: #000;
+  }
+
+}
+
+
+
 .main{
   padding: 0;
   margin: 0;
@@ -71,12 +85,6 @@ ion-button {
   margin-left: 50px;
 
 }
-.title{
-  color: white;
-  font-size: 30px; /* Aumenta o tamanho do texto */
-  margin-left: 50px;
-
-}
 @media screen and (max-width: 600px) {
   .externo, .interno, .class-tree {
     width: 90%;
@@ -94,10 +102,6 @@ ion-button {
     height: 90vh; /* Altura total da tela */
 
   }
-.title{
-  font-size: 20px; /* Aumenta o tamanho do texto */
-
-}
 .paragrafer{
   font-size: 15px; /* Aumenta o tamanho do texto */
 
@@ -111,4 +115,10 @@ ion-button {
   margin-right: 50px;
   margin-left: 50px;
 }
+ion-title {
+  margin-bottom: 13px;
+  --color: #000;
+
+}
+
 }
