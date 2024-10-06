@@ -6,7 +6,7 @@
   /* theme/variables.scss */
 
 
-  --ion-background-color: rgb(250, 249, 247); /* Aplica o fundo global */
+  --ion-background-color: rgb(250, 247, 247); /* Aplica o fundo global */
 
 
   /** primary **/
@@ -87,8 +87,9 @@
    * Dark Colors
    * -------------------------------------------
    */
-
   body {
+    --ion-background-color: rgb(250, 247, 247); /* Aplica o fundo global */
+
     --ion-color-primary: #428cff;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;
