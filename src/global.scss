@@ -32,4 +32,9 @@
 }
 ion-app {
   background-color: var(--ion-background-color);
+  color: var(--ion-text-color);
+}
+ion-list, ion-item, ion-card {
+  background-color: var(--ion-background-color);
+  color: var(--ion-text-color);
 }
