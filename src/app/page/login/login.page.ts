@@ -49,8 +49,7 @@ export class LoginPage implements OnInit {
     this.servicoLogin.afAuth.authState.subscribe(user => {
       if (user) {
         this.router.navigate(['/home']);
-      } else {
-        this.router.navigate(['/login']);
+
       }
     });
 
