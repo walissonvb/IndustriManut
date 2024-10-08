@@ -28,6 +28,7 @@ ion-content {
 .interno {
   margin-top: 30px;
   margin-left: 35px;
+  margin-bottom: 5px;
   width: 100%; /* Ajustado para evitar overflow */
   border: 5px solid orange;
   border-bottom-right-radius: 70px;
@@ -103,6 +104,7 @@ ion-button {
 
   .interno {
     max-height: 80vh; /* Altura máxima */
+    margin-bottom: 35px;
   }
 
   .class-tree {
