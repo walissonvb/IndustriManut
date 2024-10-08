@@ -28,13 +28,12 @@ ion-content {
 .interno {
   margin-top: 30px;
   margin-left: 35px;
-  margin-bottom: 5px;
   width: 100%; /* Ajustado para evitar overflow */
   border: 5px solid orange;
   border-bottom-right-radius: 70px;
   border-top-right-radius: 70px;
   background: rgba(255, 165, 0, 0.8); /* Aumentei a opacidade para melhor contraste */
-  height: 80vh; /* Altura total da tela */
+  height: auto; /* Altura total da tela */
   padding: 20px; /* Adicionando padding para espaçar o conteúdo */
 }
 
@@ -97,7 +96,7 @@ ion-button {
 
 @media screen and (max-width: 700px) {
   .externo, .interno, .class-tree {
-    width: 90%; /* Ajusta largura para telas menores */
+    width: auto; /* Ajusta largura para telas menores */
     margin-left: 9px;
     margin-right: 0px;
   }
