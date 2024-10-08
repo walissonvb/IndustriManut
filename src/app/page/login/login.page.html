@@ -7,39 +7,42 @@
 <main>
   <ion-content>
     <main>
-      <!-- Seção do formulário de login -->
       <ion-row>
         <ion-col class="externo">
           <div class="interno" *ngIf="showLoginForm">
             <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
               <h1 class="class-one">Login</h1>
               <div class="div-input">
-                <ion-input class="input-input" [(ngModel)]="dados.email" name="email"
-                  placeholder="Digite Seu e-mail Aqui"></ion-input>
+                <ion-item class="rounded-item">
+                  <ion-input [(ngModel)]="dados.email" name="email" placeholder="Digite Seu e-mail Aqui"></ion-input>
+                </ion-item>
               </div>
               <div class="div-input">
-                <ion-input class="input-input" [(ngModel)]="dados.password" name="password"
-                  placeholder="Digite Sua Senha Aqui"></ion-input>
+                <ion-item class="rounded-item">
+                  <ion-input [(ngModel)]="dados.password" name="password" placeholder="Digite Sua Senha Aqui"></ion-input>
+                </ion-item>
               </div>
               <ion-button type="submit">{{loginButtonText}}</ion-button>
               <ion-button type="button" (click)="toggleForm()">{{registerButtonText}}</ion-button>
+
             </form>
           </div>
-
-          <!-- Seção do formulário de cadastro -->
           <div class="interno" *ngIf="!showLoginForm">
-            <form #registerForm="ngForm" (ngSubmit)="cadastrar(registerForm)">
+            <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
               <h1 class="class-one">Cadastro</h1>
               <div class="div-input">
-                <ion-input class="input-input" [(ngModel)]="dados.email" name="email"
-                  placeholder="Digite seu e-mail aqui"></ion-input>
+                <ion-item class="rounded-item">
+                  <ion-input [(ngModel)]="dados.email" name="email" placeholder="Cadastro Seu e-mail Aqui"></ion-input>
+                </ion-item>
               </div>
               <div class="div-input">
-                <ion-input class="input-input" [(ngModel)]="dados.password" name="password"
-                  placeholder="Digite sua senha aqui"></ion-input>
+                <ion-item class="rounded-item">
+                  <ion-input [(ngModel)]="dados.password" name="password" placeholder="Cadastre Sua Senha Aqui"></ion-input>
+                </ion-item>
               </div>
               <ion-button type="submit">{{loginButtonText0}}</ion-button>
               <ion-button type="button" (click)="toggleForm()">{{registerButtonText0}}</ion-button>
+
             </form>
           </div>
 

@@ -1,4 +1,4 @@
-ion-header{
+ion-header {
   ion-toolbar {
     --background: orange;
     height: 45px;
@@ -7,67 +7,74 @@ ion-header{
     margin-bottom: 13px;
     color: #000;
   }
-
 }
 
-
-
-.main{
+.main {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+
 ion-content {
   --background: url('https://live.staticflickr.com/65535/53553588256_7dc9dc65b9_w.jpg') no-repeat center center / cover;
   height: 100vh; /* Altura total da tela */
   width: 100%; /* Largura total da tela */
 }
-.externo{
-  flex-direction: column;
 
+.externo {
+  flex-direction: column;
 }
-.interno{
+
+.interno {
   margin-top: 30px;
   margin-left: 35px;
-  width: 110%;
+  width: 100%; /* Ajustado para evitar overflow */
   border: 5px solid orange;
   border-bottom-right-radius: 70px;
   border-top-right-radius: 70px;
-  background: rgba(255, 165, 0, 0.4);
-  --ion-background-color: rgba(255, 165, 0, 0.4);
+  background: rgba(255, 165, 0, 0.8); /* Aumentei a opacidade para melhor contraste */
   height: 80vh; /* Altura total da tela */
-
+  padding: 20px; /* Adicionando padding para espaçar o conteúdo */
 }
+
 .div-input {
-  border-radius: 05px;
-  border: 1px solid #000;
-  margin: 25px;
-  background: rgba(49, 49, 48, 0.4) !important;
-  color: rgb(248, 247, 247);
+  margin: 15px auto; /* Espaçamento mais suave */
+  width: 90%; /* Ajustando a largura */
+}
+ion-item{
+  border: 2px solid #000;
+  border-radius: 5px;
 
 }
-.input-input{
-  --background: rgba(49, 49, 48);
 
+.div-input ion-input {
+  --background: rgb(255, 255, 255); /* Fundo branco nos inputs */
+  --color:#000; /* Texto preto para visibilidade */
+  width: 100%; /* Ajustar input para preencher o container */
 }
+
 ion-button {
   border: 1px solid #000;
   border-radius: 5px;
-  color: white;
-  --background: rgba(49, 49, 48) !important;
+  --background: rgb(255, 255, 255) !important; /* Fundo laranja para destaque */
+  --color: #000 !important; /* Texto branco para contraste */
   display: block;
   margin-right: 50px;
   margin-left: 50px;
+  font-size: 20px;
 }
-.class-one{
+
+.class-one {
   margin-left: 50px;
   color: rgb(255, 255, 255);
-  font-size: 50px; /* Aumenta o tamanho do texto */
+  font-size: 40px; /* Tamanho grande do texto */
 }
-.class-two{
+
+.class-two {
   color: rgb(255, 255, 255);
-  font-size: 50px; /* Aumenta o tamanho do texto */
+  font-size: 50px; /* Tamanho grande do texto */
 }
+
 .class-tree {
   margin-top: 35px;
   margin-right: 100px;
@@ -76,49 +83,47 @@ ion-button {
   border: 5px solid orange;
   border-bottom-left-radius: 70px;
   border-top-left-radius: 70px;
-  background:rgba(49, 49, 48, 0.9);
+  background: rgba(49, 49, 48, 0.9); /* Fundo escuro com transparência menor */
   height: 80vh; /* Altura total da tela */
+  padding: 20px; /* Adicionando padding para espaçamento interno */
 }
-.paragrafer{
-  color: white;
-  font-size: 20px; /* Aumenta o tamanho do texto */
-  margin-left: 50px;
 
+.paragrafer {
+  color: white;
+  font-size: 20px; /* Tamanho do texto */
+  margin-left: 50px;
 }
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 700px) {
   .externo, .interno, .class-tree {
-    width: 90%;
+    width: 90%; /* Ajusta largura para telas menores */
     margin-left: 9px;
     margin-right: 0px;
   }
+
   .interno {
     max-height: 80vh; /* Altura máxima */
   }
+
   .class-tree {
     width: 90%;
     margin-left: 15px;
     margin-right: 25px;
     margin-bottom: 100px;
     height: 90vh; /* Altura total da tela */
-
   }
-.paragrafer{
-  font-size: 15px; /* Aumenta o tamanho do texto */
 
-}
-ion-button {
-  border: 1px solid #000;
-  border-radius: 5px;
-  color: white;
-  --background: rgba(49, 49, 48) !important;
-  display: block;
-  margin-right: 50px;
-  margin-left: 50px;
-}
-ion-title {
-  margin-bottom: 13px;
-  --color: #000;
+  .paragrafer {
+    font-size: 15px; /* Texto menor para telas pequenas */
+  }
 
-}
+  ion-button {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
 
+  ion-title {
+    margin-bottom: 13px;
+    --color: #000;
+  }
 }
