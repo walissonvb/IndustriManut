@@ -10,6 +10,11 @@ ion-title {
 ion-buttons {
   margin-bottom: 13px;
 }
+ion-button {
+  --background: orange;
+  margin: 5px;
+}
+
 body, ion-content {
   margin: 0;
   padding: 0;
@@ -49,10 +54,33 @@ ion-radio-group.centralizado {
   display: flex;
   justify-content: flex-end;
 }
-ion-button {
-  --background: orange;
-  margin: 5px;
+ion-radio::part(container) {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1.5px solid orange;
+  display: flex;
+}
 
+ion-radio::part(mark) {
+  background: none;
+  transition: none;
+  transform: none;
+  border-radius: 0;
+}
+
+ion-radio.radio-checked::part(container) {
+  background: orange;
+  border-color: transparent;
+}
+
+ion-radio.radio-checked::part(mark) {
+  width: 6px;
+  height: 10px;
+  border-width: 0px 2px 2px 0px;
+  border-style: solid;
+  border-color: #fff;
+  transform: rotate(45deg);
 }
 
 /* Estilo adicional para dispositivos pequenos */

@@ -1,8 +1,8 @@
-<ion-header >
+<ion-header>
   <ion-toolbar>
     <ion-title slot="start"> Ativos </ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="pesquisar()" >
+      <ion-button (click)="pesquisar()">
         <ion-icon name="search-outline"></ion-icon>
       </ion-button>
       <ion-button (click)="fecharModal()">
@@ -13,27 +13,19 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
     <ion-card *ngFor="let c of maquina" class="ion-card">
       <ion-card-header id="cardHeader">
         <ion-card-title class="card-titulo">{{c.nome}}</ion-card-title>
         <ion-card-subtitle class="card-subtitulo">{{c.manual}}</ion-card-subtitle>
       </ion-card-header>
-
-      <ion-card-content>
-        <p>Classificação: {{c.classificacao}}</p>
-        <ion-buttons slot="end">
-          <ion-button class="card-botoes" (click)="atualizar(c)">
-            <ion-icon name="create-outline"></ion-icon> Atualizar
-          </ion-button>
-          <ion-button color="danger" (click)="remover(c.id)">
-            <ion-icon name="trash-outline"></ion-icon>
-          </ion-button>
-
-        </ion-buttons>
-        <ion-button class="buttonactul" fill="outline" (click)="openListPeca(c.id)">Peças</ion-button>
-      </ion-card-content>
+      <p>Classificação: {{c.classificacao}}</p>
+      <ion-buttons class="csd-button"  >
+        <ion-button fill="clear" color="warning" (click)="atualizar(c)">Atualizar</ion-button>
+        <ion-button  fill="clear" color="warning" color="danger" (click)="remover(c.id)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      <ion-button  fill="clear" color="warning" (click)="openListPeca(c.id)">Peças</ion-button>
+    </ion-buttons>
     </ion-card>
-    <ion-button class="buttonCreat" expand="block" fill="outline" (click)="abrirModal()">Novo Ativo</ion-button>
-  </ion-list>
+    <ion-button expand="block" (click)="abrirModal()">Novo Ativo</ion-button>
 </ion-content>

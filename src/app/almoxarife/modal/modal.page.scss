@@ -3,11 +3,6 @@ body, ion-content {
   padding: 0;
   height: 100%; /* Certifica-se de que o conteúdo ocupa 100% da tela */
   font-family: Arial, sans-serif;
-  --background: rgb(250, 249, 247); /* Aplica o fundo a todo o body */
-}
-ion-item{
-  --background: rgb(250, 249, 247); /* Aplica o fundo a todo o body */
-
 }
 
 ion-toolbar {
@@ -25,13 +20,6 @@ ion-buttons{
 }
 ion-button{
   --background: orange;
-color: #000;
+color: white;
 }
 
-    .boton {
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      --background: rgba(255, 164, 0);
-    }

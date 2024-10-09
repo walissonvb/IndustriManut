@@ -17,12 +17,8 @@
     <form [formGroup]="mensagemForm" (ngSubmit)="gerarRelatorio()">
       <!-- Escolha da Máquina -->
       <div *ngIf="firtchec">
-        <ion-list>
-          <ion-item *ngFor="let m of maquinas">
-            <ion-button expand="block" class="div-input-firt" (click)="firtchecOUT(m.id, m.nome)">
-              {{ m.nome }}
-            </ion-button>
-          </ion-item>
+        <ion-list *ngFor="let m of maquinas">
+            <ion-button expand="block" (click)="firtchecOUT(m.id, m.nome)"> {{ m.nome }} </ion-button>
         </ion-list>
       </div>
 
@@ -113,7 +109,7 @@
           <p>Foto</p>
           <ion-input label="Foto" placeholder="link da foto" type="text" formControlName="foto"></ion-input>
         </div>
-
+<br>
         <ion-button type="submit" expand="block" >Criar O.S</ion-button>
       </div>
     </form>

@@ -28,11 +28,8 @@ interface Resultado {
 })
 export class PaginaPage implements OnInit {
   cliente!: Cliente[];
-  dados: User = {
-    id: '',
-    email: '',
-    password: '',
-  };
+  isSmallScreen: boolean = window.innerWidth < 768;
+
 
 
   constructor(
@@ -43,7 +40,9 @@ export class PaginaPage implements OnInit {
     private modalCtrl: ModalController,
     private alertController: AlertController,
     private firebaseService: FirebaseService // injeta o serviço FirebaseService
-  ) { }
+  ) {
+
+  }
 
   async ngOnInit() {
     try {

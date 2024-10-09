@@ -1,8 +1,8 @@
-<ion-header >
-  <ion-toolbar class="toolbar">
+<ion-header>
+  <ion-toolbar>
     <ion-title slot="start">Cadastro Preventiva</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="pesquisar()" >
+      <ion-button (click)="pesquisar()">
         <ion-icon name="search-outline"></ion-icon>
       </ion-button>
       <ion-button (click)="fecharModal()">
@@ -12,151 +12,141 @@
   </ion-toolbar>
 </ion-header>
 
-<br><br>
 <ion-content>
-  <ng-container>
+  <div>
     <form [formGroup]="mensagemForm" (ngSubmit)="onCreate()">
-      <ion-toolbar>
-        <p class="deslocado">Nome da Preventiva</p>
-      </ion-toolbar>
-      <ion-item>
-        <ion-input label="Nome da Preventiva" label-placement="floating" fill="solid"
-          placeholder="Digite o Nome da Preventiva" type="text" formControlName="nomePreventiva" required></ion-input>
-      </ion-item>
+      <!-- Nome da Preventiva -->
+      <div class="deslocado">
+        <p>Nome da Preventiva</p>
+        <ion-input label="Nome da Preventiva" type="text" formControlName="nomePreventiva" required></ion-input>
+      </div>
+      <br>
 
-      <br><br>
-      <ion-toolbar>
-        <p class="deslocado">Nome da Máquina</p>
-      </ion-toolbar>
-      <ion-list *ngFor="let maq of maquinas">
-        <ion-item>{{maq.nome}}</ion-item>
-      </ion-list>
+      <!-- Nome da Máquina -->
+      <div class="deslocado">
+        <p>Nome da Máquina</p>
+        <ion-list *ngFor="let maq of maquinas">
+          <ion-item>{{ maq.nome }}</ion-item>
+        </ion-list>
+      </div>
+      <br>
 
-      <br><br>
-      <ion-item>
-        <ion-input label="Passo" label-placement="floating" fill="solid" placeholder="Digite o passo" type="text"
-          formControlName="passo" required readonly></ion-input>
-      </ion-item>
+      <!-- Passo -->
+      <div class="deslocado">
+        <p>Passo</p>
+        <ion-input label="Passo" type="text" formControlName="passo" required readonly></ion-input>
+      </div>
+      <br>
 
-      <br><br>
-      <ion-toolbar>
-        <p class="deslocado">Status do Serviço</p>
-      </ion-toolbar>
-      <ion-radio-group formControlName="status">
+      <!-- Status do Serviço -->
+      <div class="deslocado">
+        <p>Status do Serviço</p>
+        <ion-radio-group formControlName="status">
+          <ion-item>
+            <ion-radio value="agendado">Agendado</ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-radio value="em progresso">Em Progresso</ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-radio value="concluído">Concluído</ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </div>
+      <br>
+
+      <!-- Agendamento -->
+      <div class="deslocado">
+        <p>Agende a Preventiva</p>
         <ion-item>
-          <ion-radio class="botao-direita" value="agendado" aria-label="Agendado">Agendado</ion-radio>
+          <ion-datetime display-format="DD/MM/YYYY" formControlName="dataInicial"></ion-datetime>
         </ion-item>
+      </div>
+      <br>
+
+      <!-- Periodicidade -->
+      <div class="deslocado">
+        <p>Periodicidade</p>
         <ion-item>
-          <ion-radio class="botao-direita" value="em progresso" aria-label="Em Progresso">Em Progresso</ion-radio>
+          <ion-select formControlName="periodicidade"  interface="popover">
+            <ion-select-option value="30 dias">30 dias</ion-select-option>
+            <ion-select-option value="03 meses">3 meses</ion-select-option>
+            <ion-select-option value="06 meses">6 meses</ion-select-option>
+            <ion-select-option value="01 ano">1 ano</ion-select-option>
+          </ion-select>
         </ion-item>
+      </div>
+      <br>
+
+      <!-- Local de Instalação -->
+      <div class="deslocado">
+        <p>Local da Instalação</p>
         <ion-item>
-          <ion-radio class="botao-direita" value="concluído" aria-label="Concluído">Concluído</ion-radio>
+          <ion-select formControlName="localInstalacao" interface="popover">
+            <ion-select-option value="Acionamento">Acionamento</ion-select-option>
+            <ion-select-option value="Estrutura">Estrutura</ion-select-option>
+            <ion-select-option value="Instrumentação">Instrumentação</ion-select-option>
+          </ion-select>
         </ion-item>
-      </ion-radio-group>
+      </div>
+      <br>
 
+      <!-- Tipo de Preventiva -->
+      <div class="deslocado">
+        <p>Tipo de Preventiva</p>
+        <ion-item>
+          <ion-select formControlName="tipo" interface="popover" (ngModelChange)="onTipoChange($event)">
+            <ion-select-option value="Elétrica">Elétrica</ion-select-option>
+            <ion-select-option value="Mecânica">Mecânica</ion-select-option>
+            <ion-select-option value="Eletroeletrônica">Eletroeletrônica</ion-select-option>
+            <ion-select-option value="Pneumática">Pneumática</ion-select-option>
+            <ion-select-option value="Hidráulica">Hidráulica</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <br>
 
+      <!-- Modo de Falha -->
+      <div class="deslocado">
+        <p>Modo de Falha</p>
+        <ion-item>
+          <ion-select formControlName="modoFalha" [multiple]="true">
+            <ion-select-option *ngFor="let option of modoFalhaOptions" [value]="option">{{ option }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <br>
 
+      <!-- Nome das Peças -->
+      <div class="deslocado">
+        <p>Nome das Peças</p>
+        <ion-item>
+          <ion-select formControlName="selectedArvorepeca" (ionChange)="onArvorepecaChange($event)">
+            <ion-select-option *ngFor="let arvorepeca of arvorepecas" [value]="arvorepeca.nome">{{ arvorepeca.nome }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <br>
 
-      <br><br>
-      <ion-toolbar>
-        <p class="deslocado">Agende a Preventiva</p>
-      </ion-toolbar>
-      <ion-item class="dateTimeItem">
-        <ion-datetime display-format="DD/MM/YYYY" formControlName="dataInicial"></ion-datetime>
-      </ion-item>
+      <!-- Procedimento Operacional -->
+      <div class="deslocado">
+        <p>Procedimento Operacional</p>
+        <ion-item>
+          <ion-textarea formControlName="instrucao" required placeholder="Digite a instrução"></ion-textarea>
+        </ion-item>
+      </div>
+      <br>
 
-      <br><br>
-      <ion-toolbar>
-        <p class="deslocado">Periodicidade</p>
-      </ion-toolbar>
-      <ion-item>
-        <ion-select formControlName="periodicidade" label="Periodicidade"
-          [interfaceOptions]="customperiodicidadeOptions" interface="popover">
-          <ion-select-option value="30 dias">30 dias</ion-select-option>
-          <ion-select-option value="03 meses">3 meses</ion-select-option>
-          <ion-select-option value="06 meses">6 meses</ion-select-option>
-          <ion-select-option value="01 ano">1 ano</ion-select-option>
-        </ion-select>
-      </ion-item>
+      <!-- Foto -->
+      <div class="deslocado">
+        <p>Foto</p>
+        <ion-item>
+          <ion-input formControlName="foto" placeholder="Link da foto"></ion-input>
+        </ion-item>
+      </div>
+      <br>
 
-      <br><br>
-      <ion-toolbar>
-        <p class="deslocado">LocalInstalacao</p>
-      </ion-toolbar>
-      <ion-item>
-        <ion-select formControlName="localInstalacao" label="Local Instalacao" [interfaceOptions]="customliOptions"
-          interface="popover" (ngModelChange)="pecasPlace($event)">
-          <ion-select-option value="Acionamento">Acionamento</ion-select-option>
-          <ion-select-option value="Estrutura">Estrutura</ion-select-option>
-          <ion-select-option value="Instrumentação">Instrumentação</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <br><br>
-      <ion-toolbar>
-        <p class="deslocado">Tipo de Preventiva</p>
-      </ion-toolbar>
-      <ion-item>
-        <ion-select formControlName="tipo" label="Tipo" [interfaceOptions]="customTipoOptions" interface="popover" (ngModelChange)="onTipoChange($event)">
-          <ion-select-option value="Elétrica">Elétrica</ion-select-option>
-          <ion-select-option value="Mecânica">Mecânica</ion-select-option>
-          <ion-select-option value="Eletroeletrônica">Eletroeletrônica</ion-select-option>
-          <ion-select-option value="Pneumática">Pneumática</ion-select-option>
-          <ion-select-option value="Hidráulica">Hidráulica</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <br><br>
-      <ion-toolbar>
-        <p class="deslocado">Modo Falha</p>
-      </ion-toolbar>
-      <ion-list>
-        <ion-select formControlName="modoFalha" [interfaceOptions]="customFalhaOptions" interface="popover" [multiple]="true">
-          <ion-select-option *ngFor="let option of modoFalhaOptions" [value]="option">{{ option }}</ion-select-option>
-        </ion-select>
-      </ion-list>
-
-
-      <br><br>
-
-      <ion-toolbar>
-        <p class="deslocado">Nome da Peças</p>
-      </ion-toolbar>
-      <ion-item>
-        <ion-select [interfaceOptions]="custompecaOptions" formControlName="selectedArvorepeca"
-          (ionChange)="onArvorepecaChange($event)">
-          <ion-select-option *ngFor="let arvorepeca of arvorepecas" [value]="arvorepeca">{{ arvorepeca.nome
-            }}</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-toolbar>
-        <p class="deslocado">Procedimento Operacional</p>
-      </ion-toolbar>
-      <ion-item>
-        <ion-textarea *ngIf="selectedArvorepeca" label="Instrução" label-placement="floating"
-          placeholder="Digite a instrução" formControlName="instrucao" required>
-          Tipo de inspeção: {{ selectedArvorepeca.inspecao }} ,
-          Competencia: {{ selectedArvorepeca.localInstalacao }} ,
-          Setor: {{ selectedArvorepeca.tipo }}
-        </ion-textarea>
-      </ion-item>
-
-      <br><br>
-      <ion-toolbar>
-        <p class="deslocado">Foto</p>
-      </ion-toolbar>
-      <ion-item>
-        <ion-input label="Foto" label-placement="floating" fill="solid" placeholder="Digite a foto" type="text"
-          formControlName="foto" required></ion-input>
-      </ion-item>
-
-      <br><br>
-      <ion-button type="submit" expand="block" class="minha-cor">Criar</ion-button>
-      <!-- Conteúdo do cartão -->
-      <img [src]="mensagem.foto" />
-
+      <ion-button type="submit" expand="block">Criar Preventiva</ion-button>
     </form>
-
-  </ng-container>
+  </div>
 </ion-content>

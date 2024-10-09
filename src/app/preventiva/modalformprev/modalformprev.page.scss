@@ -1,21 +1,43 @@
-.toolbar {
+ion-toolbar {
   --background: orange;
   height: 45px;
 }
-ion-title{
+
+ion-title {
   margin-bottom: 13px;
   color: #000;
-
 }
 
-ion-buttons{
+ion-buttons {
   margin-bottom: 13px;
 }
 
 ion-button {
   --background: orange;
+  margin: 5px;
 }
 
+ion-content {
+  padding: 0 15px;
+}
+
+.deslocado {
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+}
+
+ion-item {
+  --padding-start: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+}
+
+ion-select, ion-input, ion-textarea {
+  --padding-start: 15px;
+  text-align: left;
+}
 ion-radio::part(container) {
   width: 30px;
   height: 30px;
@@ -55,50 +77,3 @@ ion-radio-group.centralizado {
 ion-radio-group.centralizado ion-radio:not(:last-child) {
   margin-right: 30px;
 }
-
-p.deslocado {
-  --background: rgb(231, 226, 216);
-  font-family: "Sedan", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 20px;
-  color: orange;
-  padding-right: 20px;
-  margin-left: 50px;
-}
-
-.texto-esquerda {
-  text-align: left;
-}
-
-.botao-esquerda {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.botao-direita {
-  display: flex;
-  justify-content: flex-end;
-}
-.dateTimeItem {
-  margin: auto;
-  width: 50%; /* ou qualquer largura desejada */
-}
-/* Estilos para telas com largura máxima de 600px */
-@media screen and (max-width: 600px) {
-  .dateTimeItem {
-    width: 100%; /* Ajusta a largura para 100% em telas pequenas */
-  }
-.custom-select-popover {
-  .select-popover-content {
-      ion-list {
-          ion-item {
-              display: block;
-          }
-      }
-  }
-}
-
-}
-
-

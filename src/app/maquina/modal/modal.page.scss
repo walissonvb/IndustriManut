@@ -8,12 +8,13 @@ ion-title{
 
 }
 
-ion-buttons{
+ion-buttons {
   margin-bottom: 13px;
 }
-ion-button{
+ion-button {
   --background: orange;
-color: #000;
+  margin: 5px;
+  color: white;
 }
 
 ion-radio::part(container) {

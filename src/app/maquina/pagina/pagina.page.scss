@@ -7,9 +7,16 @@ ion-title{
   color: #000;
 
 }
-ion-buttons{
+ion-buttons {
   margin-bottom: 13px;
 }
+
+ion-button {
+  --background: orange;
+  margin: 5px;
+  color: white;
+}
+
 
 .font-heder {
   font-family: "Sedan", serif;
@@ -60,16 +67,6 @@ ion-buttons{
 
 }
 
-
-
-/* Estilo para cada botão individual */
-.card-botoes {
-  flex: 1;
-  margin-right: 10px; /* Espaçamento entre os botões */
-  margin-right: 10%;
-  color: #000000;
-}
-
 .ion-card {
   width: 250px; /* Largura desejada */
   height: 220px; /* Altura desejada */
@@ -80,10 +77,11 @@ ion-buttons{
   margin: 60px;
 
 }
-.buttonactul{
-  color: orange;
-  --border-color: orange;
-}
+.csd-button{
+    flex: 1;
+    margin-right: 10px; /* Espaçamento entre os botões */
+    margin-right: 10%;
+  }
 
 
 

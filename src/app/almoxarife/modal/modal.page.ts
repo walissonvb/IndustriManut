@@ -14,6 +14,7 @@ interface Resultado {
   produto: string;
   estoque: number;
   local: string;
+  codigo: string;
 }
 
 @Component({
@@ -36,6 +37,7 @@ export class ModalPage implements OnInit {
     produto: '',
     estoque: 0,
     local: '',
+    codigo:'',
     userId: '',
   };
 

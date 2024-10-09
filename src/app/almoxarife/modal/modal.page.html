@@ -15,18 +15,23 @@
 
 <ion-content>
 <form #f="ngForm" (ngSubmit)= "enviando(f)">
+  <p class="deslocado" >Produto</p>
   <ion-item>
-    <ion-label position="floating">Produto</ion-label>
     <ion-input [(ngModel)] ="dados.produto" name="produto"></ion-input>
   </ion-item>
+  <p class="deslocado" >Estoque</p>
   <ion-item>
-    <ion-label position="floating">Estoque</ion-label>
-    <ion-input [(ngModel)] ="dados.estoque" name="estoque"></ion-input>
+  <ion-input [(ngModel)] ="dados.estoque" name="estoque"></ion-input>
   </ion-item>
+  <p class="deslocado" >Local</p>
   <ion-item>
-    <ion-label position="floating">Local</ion-label>
     <ion-input [(ngModel)] ="dados.local" name="local"></ion-input>
   </ion-item>
+  <p class="deslocado" >Codigo</p>
+  <ion-item>
+    <ion-input [(ngModel)] ="dados.codigo" name="Codigo"></ion-input>
+  </ion-item>
+
 
 </form>
 </ion-content>

@@ -8,6 +8,7 @@ export interface Cliente {
   produto: string;
   estoque: number;
   local: string;
+  codigo: string;
   userId: string;
 }
 
