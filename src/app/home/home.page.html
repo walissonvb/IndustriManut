@@ -1,12 +1,12 @@
 <ion-header id="app-header">
   <ion-toolbar class="transparent-header">
-    <ion-buttons >
-      <ion-menu-button  id="menu-button">
+    <ion-buttons>
+      <ion-menu-button id="menu-button">
         <ion-icon slot="start" name="menu"></ion-icon>
       </ion-menu-button>
       <ion-title>INDUSTRI-PREV</ion-title>
       <ion-button color="rgba(255, 165, 0, 0.4)" (click)="pesquisar()">
-        <ion-icon slot="end"  name="search-sharp"></ion-icon>
+        <ion-icon slot="end" name="search-sharp"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -66,7 +66,20 @@
         </ion-segment-button>
       </ion-col>
     </ion-row>
+
     <ion-row>
+      <ion-col>
+        <ion-card id="fullscreen-card">
+          <ion-card-header>
+            <ion-card-title class="card-titulo">MTBF</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas baseChart [datasets]="chardata" [labels]="chartLabel" [type]="chartType" [options]="chartOptions">
+            </canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
       <ion-col>
         <ion-card id="fullscreen-card">
           <ion-card-header id="cardHeader">
@@ -86,9 +99,9 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
+
       <ion-col>
         <ion-card id="fullscreen-card">
-
           <ion-card-header>
             <ion-card-title class="card-titulo">Relatórios</ion-card-title>
             <ion-card-subtitle class="card-subtitulo" *ngIf="infoRel.length === 0">NÃO HÁ RELATÓRIOS</ion-card-subtitle>
@@ -102,26 +115,9 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col>
-        <ion-card id="fullscreen-card">
-          <ion-card-header>
-            <ion-card-title class="card-titulo">Todos os Ativos</ion-card-title>
-            <ion-card-subtitle class="card-subtitulo" *ngIf="retmaq.length === 0">NÃO HÁ MAQUINAS
-              CADASTRADAS</ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>
 
-            <ion-list *ngFor="let maquina of retmaq " id="ion-list">
-              <ion-item>
-                <ion-thumbnail slot="start">
-                  <img src=" {{ maquina .classificacao }}" />
-                </ion-thumbnail>
-                <ion-label>{{maquina .nome}}</ion-label>
-              </ion-item>
-            </ion-list>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
+
+
     </ion-row>
   </ion-grid>
 

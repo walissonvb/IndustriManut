@@ -10,7 +10,7 @@ import { getFirestore } from 'firebase/firestore';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { NgChartsModule } from 'ng2-charts';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBZOgvV-GPZhvM0KZBnE8VY_f-oSevyQlo',
@@ -31,6 +31,7 @@ const firebaseConfig = {
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    NgChartsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
   ],

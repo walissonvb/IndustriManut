@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ModalController, IonContent, IonMenu, PopoverController, ToastController } from '@ionic/angular';
 import { PaginaPage } from '../almoxarife/pagina/pagina.page';
 import { Pagina01Page } from '../maquina/pagina/pagina.page';
@@ -18,16 +18,16 @@ import { Router } from '@angular/router';
 import { WhatsonPage } from '../whatson/whatson.page';
 import { Relatorio, RelatorioService } from '../servico/relatorio.service';
 import { Subscription } from 'rxjs';
-import { OrdemSPage } from '../ordemServico/ordem-s/ordem-s.page';
-import { AllordemPage } from '../ordemServico/allordem/allordem.page';
-
-
+import { ChartDataset, ChartType } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+import { IndicadoresService, Indicadres } from '../servico/indicadores.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit, OnDestroy {
+  @ViewChild(BaseChartDirective) chart?: BaseChartDirective | undefined;
   private itemUpdatedSubscription!: Subscription; // Adiciona o '!'
   @ViewChild(IonContent) content!: IonContent;
   @ViewChild(IonMenu) menu!: IonMenu;
@@ -46,7 +46,31 @@ export class HomePage implements OnInit, OnDestroy {
   idmaquinaAtual: string[] = [];
   infoRel: Relatorio[] = [];
 
+  chardata: ChartDataset[] = [{ data: [], label: 'MTBF' }];
+  chartType: ChartType = 'bar';
+  dataInd: Indicadres[] = [];
+  chartLabel = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'];
+  chartOptions = {
+    responsive: true,
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Mês'
+        }
+      },
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: 'MTBF (horas)'
+        }
+      }
+    }
+  };
+
   constructor(
+
     private popoverController: PopoverController,
     private toastCtrl: ToastController,
     private modalCtrl: ModalController,
@@ -58,6 +82,7 @@ export class HomePage implements OnInit, OnDestroy {
     private router: Router,
     private relatorioService: RelatorioService,
     private servicoLogin: LoginService,
+    private indicadresService: IndicadoresService,
   ) { }
 
   async ngOnInit() {
@@ -72,6 +97,7 @@ export class HomePage implements OnInit, OnDestroy {
           this.openMaq();
           this.openInf();
           this.checkPreventivaAtrasada();
+          this.indicadores();
         }
       });
     } catch (error) {
@@ -79,7 +105,46 @@ export class HomePage implements OnInit, OnDestroy {
     }
   }
 
-  async loadItems(){
+  async indicadores() {
+    const user = await this.afAuth.currentUser;
+    if (user) {
+        try {
+            // Obtenha os dados ordenados por `mesReferencia`
+            this.dataInd = await this.indicadresService.readIndica();
+            this.dataInd.sort((a, b) => Number(a.mes) - Number(b.mes));
+            console.log("Dados recebidos:", this.dataInd);
+
+            // Resetando dados do gráfico
+            this.chardata[0].data = [];
+            this.chartLabel = [];
+
+            // Processando os dados para o gráfico
+            this.dataInd.forEach(item => {
+                // Extrair o valor numérico de `mtbf` e o mês
+                const mtbfValue = parseInt(item.mtbf.replace('h', ''));
+                const monthIndex = Number(item.mes) - 1;
+
+                // Adiciona o valor de `mtbf` ao data do chart
+                this.chardata[0].data.push(mtbfValue);
+
+                // Adiciona o nome do mês ao label, se ainda não estiver presente
+                const monthNames = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+                this.chartLabel.push(monthNames[monthIndex]);
+            });
+
+            // Atualiza o gráfico, se possível
+            if (this.chart) {
+                this.chart.update();
+                console.log("Gráfico atualizado com sucesso!");
+            }
+        } catch (error) {
+            console.error("Erro ao carregar dados para o gráfico:", error);
+        }
+    }
+}
+
+
+  async loadItems() {
     try {
       this.afAuth.authState.subscribe(async (user) => {
         if (user) {
@@ -157,7 +222,7 @@ export class HomePage implements OnInit, OnDestroy {
           if (this.infoRel.length === 0) {  // Verifique se o array está vazio
           } else {
             const allRela = Array.from(new Set(this.infoRel.map(relatorio => relatorio.codigoId !== undefined)));
-            console.log(this.infoRel);
+            console.log(allRela);
             // Continue o processamento, se necessário
           }
         } else {
@@ -188,7 +253,7 @@ export class HomePage implements OnInit, OnDestroy {
   async pesquisar() {
     this.modalCtrl.create({ component: WhatsonPage }).then((modal) => modal.present());
   }
-  async PopoverSuboptionsComponent(event: any) {
+  async PopoverSuboptionsComponent(event: MouseEvent) {
     const popover = await this.popoverController.create({
       component: PopoverSuboptionsComponent,
       translucent: true,
@@ -196,7 +261,7 @@ export class HomePage implements OnInit, OnDestroy {
     });
     return await popover.present();
   }
-  async PopoverManuaisComponent(event: any) {
+  async PopoverManuaisComponent(event: MouseEvent) {
     const popover = await this.popoverController.create({
       component: PopoverManuaisComponent,
       translucent: true,
@@ -204,7 +269,7 @@ export class HomePage implements OnInit, OnDestroy {
     });
     return await popover.present();
   }
-  async PopoverMaquinaComponent(event: any) {
+  async PopoverMaquinaComponent(event: MouseEvent) {
     const popover = await this.popoverController.create({
       component: PopoverMaquinaComponent,
       translucent: true,
@@ -212,7 +277,7 @@ export class HomePage implements OnInit, OnDestroy {
     });
     return await popover.present();
   }
-  async PopoverPreventivaComponent(event: any) {
+  async PopoverPreventivaComponent(event: MouseEvent) {
     const popover = await this.popoverController.create({
       component: PopoverPreventivaComponent,
       translucent: true,
@@ -317,4 +382,4 @@ export class HomePage implements OnInit, OnDestroy {
     });
     toast.present();
   }
-  }
+}

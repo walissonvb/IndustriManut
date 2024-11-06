@@ -1,24 +1,14 @@
-import { User } from './../../interfaces/user';
 import { FirebaseService } from './../../servico/firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AlmoxarifeService, Cliente } from 'src/app/servico/almoxarife.service';
 import { ModalPage } from '../modal/modal.page';
 import { AlertController } from '@ionic/angular';
-import { collection, getDocs, query, where } from 'firebase/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { firstValueFrom } from 'rxjs';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { WhatsonPage } from 'src/app/whatson/whatson.page';
-
-
-interface Resultado {
-  produto: string;
-  estoque: number;
-  local: string;
-  idUser: string;
-}
 
 
 @Component({
@@ -86,7 +76,7 @@ export class PaginaPage implements OnInit {
     toast.present();
   }
 
-  remover(id: any) {
+  remover(id: string) {
     this.serviço.deleteData01(id).then(() => this.remover);
     this.serviço.readData01().then((response) => {
       this.cliente = response;
