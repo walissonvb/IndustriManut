@@ -1,0 +1,34 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16' # Ou a versão que você está usando
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Inject environment variables
+        run: echo "API_KEY=${{ secrets.FIREBASE_API_KEY }}" >> .env
+
+      - name: Build project
+        env:
+          API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+          PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+        run: npm run build -- --configuration=production
+
+      - name: Deploy to Vercel
+        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
