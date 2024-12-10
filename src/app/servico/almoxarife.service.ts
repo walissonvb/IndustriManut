@@ -49,6 +49,7 @@ export class AlmoxarifeService {
 
 
   async createData01(cliente: Cliente) {
+    console.log('creat')
     const docRef = await addDoc(this.clienteCollection, cliente);
     return docRef.id;
   }

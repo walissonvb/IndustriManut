@@ -1,16 +1,20 @@
 {
-  "name": "IndustriManut",
+  "name": "industri-manut",
   "version": "0.0.1",
+  "type": "module",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "prebuild": "node set-env.js",
+    "build": "ng build --configuration=production",
+    "build:dev": "ng build --configuration=development",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
   },
+
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.0.0",
@@ -33,6 +37,7 @@
     "@ionic/angular": "^8.0.0",
     "beasties": "^0.1.0",
     "chart.js": "^3.9.1",
+    "dotenv": "^16.4.5",
     "firebase": "^10.13.1",
     "glob": "^9.3.5",
     "http-proxy-middleware": "^3.0.3",
@@ -43,6 +48,7 @@
     "rimraf": "^4.4.1",
     "rollup": "^4.24.3",
     "rxjs": "~7.8.0",
+    "ts-node": "^10.9.2",
     "tslib": "^2.3.0",
     "vite": "^5.4.10",
     "zone.js": "~0.14.2"
@@ -62,6 +68,7 @@
     "@ionic/angular-toolkit": "^11.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/moment": "^2.11.29",
+    "@types/node": "^22.9.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.57.1",

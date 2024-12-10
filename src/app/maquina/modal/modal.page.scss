@@ -13,8 +13,19 @@ ion-buttons {
 }
 ion-button {
   --background: orange;
+  margin-left: 50%;
+  margin-right: 50%;
+  color: white;
+  max-width: 300px; /* Largura máxima para centralizar */
+  min-width: 300px; /* Largura máxima para centralizar */
+
+}
+.submit{
+  --background: orange;
   margin: 5px;
   color: white;
+  position: fixed;
+  bottom: 0;
 }
 
 ion-radio::part(container) {

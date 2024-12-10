@@ -4,7 +4,6 @@ import { NgForm } from '@angular/forms';
 import { Maquina, MaquinaeService } from 'src/app/servico/maquinae.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ToastController } from '@ionic/angular';
-import { ArvorepecaPage } from '../arvorepeca/arvorepeca.page'; // Importe ArvorepecaPage
 import { WhatsonPage } from 'src/app/whatson/whatson.page';
 
 @Component({

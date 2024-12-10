@@ -4,7 +4,6 @@ import { Cliente } from 'src/app/servico/almoxarife.service';
 import { ModalController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { FirebaseService } from 'src/app/servico/firebase.service';
-import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from 'src/app/interfaces/user';
 import { ToastController } from '@ionic/angular';
@@ -62,6 +61,8 @@ export class ModalPage implements OnInit {
   }
 
   async enviando(form: NgForm) {
+    console.log('enviando')
+
     if (form.valid) {
       const cliente = form.value;
       cliente.userId = this.dados.userId;
